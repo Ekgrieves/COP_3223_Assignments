@@ -1,0 +1,43 @@
+/*
+COP3223 Fall 2023 Assignment 1_2
+Copyright 2023 Grieves_Elijah
+*/
+#include <stdio.h>
+int main(void) {
+    
+    int digit1, digit2, digit3, digit4, digit5, input, inputReversed, palindrome = 0;                       //Initializes variables, with palindrome being set to false
+
+    while (palindrome == 0) {                                                                               //The instructions were unclear on whether the program needed to repeat, so I made it repeat until a palindrome integer was entered
+
+        printf("Please enter a five digit integer: ");                                                      //Prompts the user for a 5 digit integer
+        scanf("%d", &input);                                                                                //Sets the user's input to "input"
+
+        inputReversed = input;                                                                              //Sets "input" to "inputReversed" (a variable that will be later overwritten) so that the original input value is not lost
+
+        digit1 = inputReversed % 10;                                                                        //Lines 17 through 30 separate each digit from "input"
+        inputReversed /= 10;
+
+        digit2 = inputReversed % 10;
+        inputReversed /= 10;
+        
+        digit3 = inputReversed % 10;
+        inputReversed /= 10;
+
+        digit4 = inputReversed % 10;
+        inputReversed /= 10;
+
+        digit5 = inputReversed % 10;
+        inputReversed /= 10;
+
+        inputReversed = (digit1 * 10000) + (digit2 * 1000) + (digit3 * 100) + (digit4 * 10) + digit5;       //Defines "inputReversed" as the reverse of "input"
+
+        if (input == inputReversed){                                                                        //Checks if "input" is a palindrome by checking if it is equal to "inputReversed"
+            printf("%d is a palindrome number\n", input);                                                   //Displays that the user's input is indeed a palindrome number
+            palindrome = 1;                                                                                 //Defines "palindrome" as true so that the while loop breaks and stops prompting the user
+        }
+        else
+            printf("%d is not a palindrome number\n", input);                                               //Displays that the user's input is not a palindrome number
+    }
+
+    return 0;
+}
