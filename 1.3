@@ -1,0 +1,41 @@
+/*
+COP3223 Fall 2023 Assignment 1_3
+Copyright 2023 Grieves_Elijah
+*/
+#include <stdio.h>
+int main(void) {
+
+    int rows;                                                                           //Initiliazes "rows" variable
+
+    printf("This program will take a user inputted value that is"                       //Informs the user of the program
+            "\nboth odd and within the range 1 to 19 and will display"
+            "\na diamond made of asterisks with the inputted number of rows.\n");
+
+    do {                                                                                //Do...while loop to repeatedly prompt the user for a number until they input one that is within the specified parameters
+
+        printf("please enter number of rows (odd number): ");                           //Prompts the user for a value that designates the height of the diamond
+        scanf("%d", &rows);                                                             //Sets the user's input to "rows"
+
+        if (rows % 2 == 0 || rows < 1 || rows > 19)                                     //Checks if the user's input is within the parameters. If not, reiterates the loop
+            continue;
+
+        for (int count = 1; count <= rows / 2 + 1; count++) {                           //For loop for the top half of the diamond
+            for (int space = 1; space <= rows / 2 + 1 - count; space++)                 //For loop that prints the spaces 
+                printf(" ");
+            for (int asterisks = 1; asterisks <= 2 * count -1; asterisks++)             //For loop that prints the asterisks
+                printf("*");
+            puts("");                                                                   //Goes to next line after each row
+        }
+
+        for (int count = rows / 2; count >= 1; count--) {                               //For loop for the bottom half of the diamond
+            for (int space = 1; space <= rows / 2 + 1 - count; space++)                 //For loop that prints the spaces
+                printf(" ");
+            for (int asterisks = 1; asterisks <= 2 * count -1; asterisks++)             //For loop that prints the asterisks
+                printf("*");
+            puts("");                                                                   //Goes to nest line after each row
+        }
+
+    }   while (rows % 2 == 0 || rows < 1 || rows > 19);                                 //Stops iterating if "rows" does not meet the conditions
+
+    return 0;
+}
